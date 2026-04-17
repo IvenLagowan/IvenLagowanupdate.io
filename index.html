@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr'Pac Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
+
+    <style>
+        /* Glitch */
+        @keyframes glitch {
+            0% {
+                text-shadow: 2px 2px red, -2px -2px blue;
+            }
+
+            50% {
+                text-shadow: -2px 2px red, 2px -2px blue;
+            }
+
+            100% {
+                text-shadow: none;
+            }
+        }
+
+        .glitch {
+            animation: glitch 1s infinite;
+        }
+
+        /* Spiderman */
+        @keyframes swing {
+            0% {
+                transform: rotate(-10deg);
+            }
+
+            50% {
+                transform: rotate(10deg);
+            }
+
+            100% {
+                transform: rotate(-10deg);
+            }
+        }
+
+        @keyframes drop {
+            from {
+                transform: translateY(-200px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .spiderman {
+            animation: drop 1s ease-out, swing 3s infinite;
+            transform-origin: top;
+        }
+
+        .spiderman-shadow {
+            filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.7));
+        }
+
+        @keyframes textInOut {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            20% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            80% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+        }
+
+        .text-anim {
+            animation: textInOut 4s infinite;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .animate-marquee {
+            display: inline-block;
+            animation: marquee 15s linear infinite;
+        }
+
+        .animate-marquee {
+            animation: marquee 15s linear infinite;
+            text-shadow: 0 0 10px #3b82f6, 0 0 20px #3b82f6;
+        }
+
+        footer:hover .animate-marquee {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-white font-sans">
+
+    <!-- Navbar -->
+    <nav class="flex justify-between items-center p-6 border-b dark:border-gray-700">
+
+        <div class="flex items-center gap-4">
+            <h1 class="text-2xl font-bold text-blue-400">Mr'Pac</h1>
+            <span class="text-sm font-bold text-red-500 border px-3 py-1 rounded-full glitch">
+                ERROR 404
+            </span>
+        </div>
+
+        <!-- Desktop Menu -->
+        <ul class="hidden md:flex gap-6">
+            <li><a href="#home" class="nav-link hover:text-blue-400">Home</a></li>
+            <li><a href="#about" class="nav-link hover:text-blue-400">About</a></li>
+            <li><a href="#projects" class="nav-link hover:text-blue-400">Projects</a></li>
+            <li><a href="#skills" class="nav-link hover:text-blue-400">Skills</a></li>
+            <li><a href="#gallery" class="nav-link hover:text-blue-400">Gallery</a></li>
+            <li><a href="#contact" class="nav-link hover:text-blue-400">Contact</a></li>
+        </ul>
+
+        <!-- Right Buttons -->
+        <div class="flex items-center gap-3">
+
+            <!-- Dark Mode Toggle -->
+            <button id="darkToggle" class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded">
+                🌙
+            </button>
+
+            <!-- Hamburger -->
+            <button id="menuBtn" class="md:hidden text-2xl">☰</button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden flex-col items-center gap-4 py-4 md:hidden">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#contact" class="nav-link">Contact</a>
+    </div>
+
+    <!-- Hero -->
+    <section id="home" class="relative text-center py-20 overflow-hidden">
+
+        <!-- Spiderman -->
+        <div id="spiderman"
+            class="absolute top-0 left-1/2 -translate-x-1/2 spiderman spiderman-shadow transition-all duration-500">
+            <img src="asset/spiderman.png" class="w-20 md:w-24">
+            <div class="w-1 h-32 bg-white dark:bg-gray-300 mx-auto"></div>
+        </div>
+
+        <img src="asset/profile.png"
+            class="w-40 h-40 md:w-56 md:h-56 mx-auto rounded-full border-4 border-blue-400 mt-20 shadow-xl hover:scale-105 transition duration-500">
+
+        <p class="text-2xl md:text-4xl font-bold mt-6 text-anim glitch">
+            Hi, I'm <span class="text-blue-400">Mr'Pac</span>
+        </p>
+        <h2 class="text-2xl md:text-4xl font-bold mt-6 text-anim glitch italic">
+            Junior Web Developer
+            <span class="text-blue-400">NITCODE</span>
+            <span class="text-blue-400">SaCode</span>
+        </h2>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-20 px-6 bg-gray-950 text-center">
+        <div class="max-w-3xl mx-auto">
+
+            <!-- Title -->
+            <h3 class="text-3xl md:text-4xl font-bold text-blue-400 mb-4">
+                About Me
+            </h3>
+
+            <!-- Name -->
+            <h4 class="text-xl md:text-2xl font-semibold text-white mb-6">
+                Iven Lagowan
+            </h4>
+
+            <!-- Description -->
+            <p class="text-gray-400 leading-relaxed text-base md:text-lg">
+                Saya adalah seorang yang mulai terjun ke dunia Teknologi Informasi saat memasuki bangku kuliah.
+                Sejak saat itu saya mulai fokus belajar coding bersama komunitas <span class="text-blue-400">SaCode
+                    Papua</span>
+                di Provinsi Papua, Jayapura.
+                <br><br>
+                Saya juga menempuh pendidikan di <span class="text-blue-400">USTJ</span>, dan pada tahun 2023
+                saya membuka kursus coding di Jayapura dengan nama
+                <span class="text-blue-400">Komunitas Edukasi Code</span>.
+                <br><br>
+                Namun karena beberapa hal, saya mengganti nama menjadi
+                <span class="text-blue-400">"NITCODE COMUNIT"</span> yang dalam bahasa Wamena berarti
+                <span class="italic text-white">"Kita Coding"</span>.
+            </p>
+
+            <!-- Social Icons -->
+            <div class="flex justify-center gap-6 mt-8">
+
+                <!-- GitHub -->
+                <a href="https://github.com/IvenLagowan" target="_blank"
+                    class="text-gray-400 hover:text-white transition duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M12 0C5.37 0 0 5.37 0 12a12 12 0 008.2 11.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.6-1.5-1.4-1.9-1.4-1.9-1.2-.8.1-.8.1-.8 1.3.1 2 .1 3 1.5 1.2 2 3.1 1.4 3.8 1 .1-.9.5-1.4.8-1.7-2.7-.3-5.6-1.3-5.6-6A4.7 4.7 0 015 7.5a4.3 4.3 0 01.1-3.2s1-.3 3.3 1.2a11.5 11.5 0 016 0C16.9 4 18 4.3 18 4.3a4.3 4.3 0 01.1 3.2 4.7 4.7 0 011.3 3.3c0 4.7-2.9 5.7-5.6 6 .5.4.9 1.2.9 2.5v3.6c0 .3.2.7.8.6A12 12 0 0024 12c0-6.63-5.37-12-12-12z" />
+                    </svg>
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/iven-lagowan-iven-b0a8a6219/" target="_blank"
+                    class="text-gray-400 hover:text-blue-400 transition duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M20.45 20.45h-3.55v-5.6c0-1.33-.02-3.05-1.86-3.05-1.86 0-2.15 1.45-2.15 2.95v5.7H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.86 3.37-1.86 3.6 0 4.27 2.37 4.27 5.46v6.29zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45z" />
+                    </svg>
+                </a>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="py-20 px-6 bg-gray-950 text-center">
+        <h3 class="text-3xl font-bold text-blue-400 mb-10">Projects</h3>
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+
+            <!-- Project 1 -->
+            <div
+                class="bg-gray-900 rounded-2xl shadow-lg hover:shadow-blue-500/30 transition duration-300 overflow-hidden">
+                <img src="asset/Project/campany.png" class="w-full h-48 object-cover">
+
+                <div class="p-5 text-left">
+                    <h4 class="text-xl font-semibold text-white mb-2">Website Portfolio</h4>
+
+                    <!-- Rating -->
+                    <div class="flex text-yellow-400 mb-2">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-alt"></i>
+                    </div>
+
+                    <p class="text-gray-400 text-sm mb-4">
+                        Portfolio modern dengan React Js & Tailwind CSS
+                    </p>
+
+                    <!-- Tech Stack -->
+                    <div class="flex flex-wrap gap-2 mb-4 text-xs">
+
+                        <span class="bg-blue-600/20 text-blue-400 px-2 py-1 rounded flex items-center gap-1">
+                            <i class="fab fa-react"></i> React
+                        </span>
+
+                        <span class="bg-cyan-600/20 text-cyan-400 px-2 py-1 rounded flex items-center gap-1">
+                            <i class="fab fa-css3-alt"></i> Tailwind
+                        </span>
+
+                        <span class="bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded flex items-center gap-1">
+                            <i class="fab fa-js"></i> JS
+                        </span>
+
+                    </div>
+
+                    <a href="https://github.com/IvenLagowan/profile-cabang-wamana.git" target="_blank"
+                        class="text-blue-400 hover:underline">
+                        <i class="fab fa-github"></i> Lihat di GitHub
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div
+                class="bg-gray-900 rounded-2xl shadow-lg hover:shadow-blue-500/30 transition duration-300 overflow-hidden">
+                <img src="asset/Project/travel.png" class="w-full h-48 object-cover">
+
+                <div class="p-5 text-left">
+                    <h4 class="text-xl font-semibold text-white mb-2">
+                        Tour Travel - Kurima Papua
+                    </h4>
+
+                    <!-- Rating -->
+                    <div class="flex text-yellow-400 mb-2">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+
+                    <p class="text-gray-400 text-sm mb-4">
+                        Website destinasi wisata menggunakan HTML, CSS & JS
+                    </p>
+
+                    <!-- Tech -->
+                    <div class="flex flex-wrap gap-2 mb-4 text-xs">
+
+                        <span class="bg-orange-600/20 text-orange-400 px-2 py-1 rounded flex items-center gap-1">
+                            <i class="fab fa-html5"></i> HTML
+                        </span>
+
+                        <span class="bg-blue-600/20 text-blue-400 px-2 py-1 rounded flex items-center gap-1">
+                            <i class="fab fa-css3-alt"></i> CSS
+                        </span>
+
+                        <span class="bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded flex items-center gap-1">
+                            <i class="fab fa-js"></i> JS
+                        </span>
+
+                    </div>
+
+                    <a href="https://github.com/IvenLagowan/IBIROMA-ID.git" target="_blank"
+                        class="text-blue-400 hover:underline">
+                        <i class="fab fa-github"></i> Lihat di GitHub
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div
+                class="bg-gray-900 rounded-2xl shadow-lg hover:shadow-blue-500/30 transition duration-300 overflow-hidden">
+                <img src="asset/Project/destinasi.png" class="w-full h-48 object-cover">
+
+                <div class="p-5 text-left">
+                    <h4 class="text-xl font-semibold text-white mb-2">
+                        Destinasi Wisata Papua Tengah
+                    </h4>
+
+                    <!-- Rating -->
+                    <div class="flex text-yellow-400 mb-2">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-alt"></i>
+                        <i class="fa fa-star text-gray-600"></i>
+                    </div>
+
+                    <p class="text-gray-400 text-sm mb-4">
+                        Sistem wisata berbasis Laravel
+                    </p>
+
+                    <!-- Tech -->
+                    <div class="flex flex-wrap gap-2 mb-4 text-xs">
+
+                        <span class="bg-red-600/20 text-red-400 px-2 py-1 rounded flex items-center gap-1">
+                            <i class="fab fa-laravel"></i> Laravel
+                        </span>
+
+                        <span class="bg-gray-600/20 text-gray-300 px-2 py-1 rounded flex items-center gap-1">
+                            <i class="fa fa-database"></i> MySQL
+                        </span>
+
+                    </div>
+
+                    <a href="https://github.com/settings/profile" target="_blank" class="text-blue-400 hover:underline">
+                        <i class="fab fa-github"></i> Lihat di GitHub
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section id="skills" class="py-20 px-6 bg-gray-900 text-center">
+        <h3 class="text-3xl font-bold text-blue-400 mb-10">My Skills</h3>
+
+        <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+
+            <!-- Skill Item -->
+            <div class="text-left">
+                <div class="flex justify-between mb-2">
+                    <span><i class="fab fa-html5 text-orange-500"></i> HTML</span>
+                    <span>90%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-3">
+                    <div class="bg-orange-500 h-3 rounded-full w-[90%]"></div>
+                </div>
+            </div>
+
+            <div class="text-left">
+                <div class="flex justify-between mb-2">
+                    <span><i class="fab fa-css3-alt text-blue-400"></i> CSS</span>
+                    <span>85%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-3">
+                    <div class="bg-blue-400 h-3 rounded-full w-[85%]"></div>
+                </div>
+            </div>
+
+            <div class="text-left">
+                <div class="flex justify-between mb-2">
+                    <span><i class="fab fa-js text-yellow-400"></i> JavaScript</span>
+                    <span>80%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-3">
+                    <div class="bg-yellow-400 h-3 rounded-full w-[80%]"></div>
+                </div>
+            </div>
+
+            <div class="text-left">
+                <div class="flex justify-between mb-2">
+                    <span><i class="fab fa-react text-cyan-400"></i> React</span>
+                    <span>75%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-3">
+                    <div class="bg-cyan-400 h-3 rounded-full w-[75%]"></div>
+                </div>
+            </div>
+
+            <div class="text-left">
+                <div class="flex justify-between mb-2">
+                    <span><i class="fab fa-laravel text-red-500"></i> Laravel</span>
+                    <span>70%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-3">
+                    <div class="bg-red-500 h-3 rounded-full w-[70%]"></div>
+                </div>
+            </div>
+
+            <div class="text-left">
+                <div class="flex justify-between mb-2">
+                    <span><i class="fa fa-database text-gray-300"></i> MySQL</span>
+                    <span>75%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-3">
+                    <div class="bg-gray-300 h-3 rounded-full w-[75%]"></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section id="gallery" class="py-20 px-6 bg-gray-950 text-center">
+        <h3 class="text-3xl font-bold text-blue-400 mb-10">Gallery</h3>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto">
+
+            <!-- Item -->
+            <div class="relative group cursor-pointer" onclick="openModal(this)">
+                <img src="asset/gallery/1 (1).jpeg" class="w-full h-40 object-cover rounded-xl">
+
+                <!-- Overlay -->
+                <div
+                    class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center rounded-xl">
+                    <i class="fa fa-search text-white text-2xl"></i>
+                </div>
+            </div>
+
+            <div class="relative group cursor-pointer" onclick="openModal(this)">
+                <img src="asset/gallery/1 (2).jpeg" class="w-full h-40 object-cover rounded-xl">
+                <div
+                    class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center rounded-xl">
+                    <i class="fa fa-search text-white text-2xl"></i>
+                </div>
+            </div>
+
+            <div class="relative group cursor-pointer" onclick="openModal(this)">
+                <img src="asset/gallery/1 (3).jpeg" class="w-full h-40 object-cover rounded-xl">
+                <div
+                    class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center rounded-xl">
+                    <i class="fa fa-search text-white text-2xl"></i>
+                </div>
+            </div>
+
+            <div class="relative group cursor-pointer" onclick="openModal(this)">
+                <img src="asset/gallery/1 (4).jpeg" class="w-full h-40 object-cover rounded-xl">
+                <div
+                    class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center rounded-xl">
+                    <i class="fa fa-search text-white text-2xl"></i>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- Contact -->
+    <section id="contact" class="py-20 px-6 bg-gray-900 text-center">
+        <h3 class="text-3xl font-bold text-blue-400 mb-10">Contact Me</h3>
+
+        <div class="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+
+            <!-- FORM -->
+            <div class="bg-gray-800 p-6 rounded-2xl shadow-lg text-left">
+                <h4 class="text-xl font-semibold mb-4 text-white">Kirim Pesan</h4>
+
+                <form class="space-y-4">
+                    <input type="text" placeholder="Nama"
+                        class="w-full p-3 rounded bg-gray-700 text-white outline-none focus:ring-2 focus:ring-blue-400">
+
+                    <input type="email" placeholder="Email"
+                        class="w-full p-3 rounded bg-gray-700 text-white outline-none focus:ring-2 focus:ring-blue-400">
+
+                    <textarea rows="4" placeholder="Pesan"
+                        class="w-full p-3 rounded bg-gray-700 text-white outline-none focus:ring-2 focus:ring-blue-400"></textarea>
+
+                    <button
+                        class="w-full bg-blue-500 hover:bg-blue-600 py-3 rounded text-white font-semibold transition">
+                        Kirim Pesan
+                    </button>
+                </form>
+            </div>
+
+            <!-- INFO -->
+            <div class="space-y-6 text-left">
+
+                <!-- WhatsApp -->
+                <div class="bg-gray-800 p-5 rounded-xl flex items-center gap-4">
+                    <i class="fab fa-whatsapp text-green-400 text-3xl"></i>
+                    <div>
+                        <p class="text-gray-400 text-sm">WhatsApp</p>
+                        <a href="https://wa.me/6285254221251" target="_blank"
+                            class="text-white font-semibold hover:text-green-400">
+                            0852-5422-1251
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="bg-gray-800 p-5 rounded-xl flex items-center gap-4">
+                    <i class="fa fa-envelope text-blue-400 text-3xl"></i>
+                    <div>
+                        <p class="text-gray-400 text-sm">Email</p>
+                        <a href="mailto:cuaocue@gmail.com" class="text-white font-semibold hover:text-blue-400">
+                            cuaocue@gmail.com
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Location -->
+                <div class="bg-gray-800 p-5 rounded-xl flex items-center gap-4">
+                    <i class="fa fa-map-marker-alt text-red-400 text-3xl"></i>
+                    <div>
+                        <p class="text-gray-400 text-sm">Alamat</p>
+                        <p class="text-white font-semibold">
+                            Wamena, Papua Pegunungan, Indonesia
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- GOOGLE MAPS -->
+        <div class="mt-12 max-w-6xl mx-auto">
+            <iframe src="https://www.google.com/maps?q=Wamena,Papua&output=embed"
+                class="w-full h-80 rounded-xl border-0">
+            </iframe>
+        </div>
+
+    </section>
+    <!-- SCRIPT -->
+    <script>
+        const links = document.querySelectorAll('.nav-link');
+        const spiderman = document.getElementById('spiderman');
+
+        // Smooth scroll + Spiderman move
+        links.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth' });
+
+                const randomX = Math.random() * 80;
+                spiderman.style.left = randomX + "%";
+
+                spiderman.style.transform = "translate(-50%, -50px) rotate(20deg)";
+                setTimeout(() => {
+                    spiderman.style.transform = "translate(-50%, 0) rotate(-10deg)";
+                }, 400);
+
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Mobile Menu
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Dark Mode Toggle
+        const toggle = document.getElementById('darkToggle');
+
+        toggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+    </script>
+
+</body>
+
+</html>
